@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  store_service:
+    build: ./store_service
+    ports:
+      - "8001:8001"
+    env_file: .env
+    restart: unless-stopped
+
+  inventory_service:
+    build: ./inventory_service
+    ports:
+      - "8002:8002"
+    env_file: .env
+    restart: unless-stopped
