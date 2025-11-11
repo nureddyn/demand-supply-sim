@@ -31,5 +31,18 @@ services:
     depends_on:
       - db
 
+  customer_sim:
+    build:
+      context: ./customer_sim
+      dockerfile: Dockerfile
+    volumes:
+      - ./customer_sim/app:/app
+    depends_on:
+      - store_service
+      - inventory_service
+    environment:
+      - ENV=development
+    command: ["python", "-m", "app"]
+
 volumes:
   db_data:
