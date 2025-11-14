@@ -1,5 +1,3 @@
-name: Run tests
-
 on:
   pull_request:
     branches: [ main ]
@@ -7,23 +5,30 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    env:
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: control_stock_test
+
     services:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DB: control_stock_test
+          POSTGRES_USER: $POSTGRES_USER
+          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+          POSTGRES_DB: $POSTGRES_DB
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U ${{ secrets.POSTGRES_USER }}"
+          --health-cmd "pg_isready -U $POSTGRES_USER"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 5
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -38,9 +43,8 @@ jobs:
         run: |
           cd inventory_service && pip install -r requirements.txt
           pytest --cov=app --cov-fail-under=30
-
           cd ../store_service && pip install -r requirements.txt
           pytest --cov=app --cov-fail-under=30
-
           cd ../customer_sim && pip install -r requirements.txt
           pytest --cov=app --cov-fail-under=30
+
