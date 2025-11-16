@@ -6,22 +6,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    env:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: control_stock_test
-
     services:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_USER: $POSTGRES_USER
-          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-          POSTGRES_DB: $POSTGRES_DB
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password_1234
+          POSTGRES_DB: test_db
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U $POSTGRES_USER"
+          --health-cmd "pg_isready -U test_user"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 5
