@@ -1,0 +1,24 @@
+[run]
+omit =
+    */__init__.py
+    */main.py
+    */config.py
+    */settings.py
+    */schemas/*.py
+    */migrations/*.py
+    */tests/*
+    */.venv/*
+    */env/*
+    */venv/*
+    */__pycache__/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    @abc.abstractmethod
+    raise NotImplementedError
+
+show_missing = True
+skip_empty = True
+
