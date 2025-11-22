@@ -4,9 +4,9 @@ services:
     env_file:
       - .env.development
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: dev_password_1234
+      POSTGRES_DB: dev_db
     ports:
       - "5432:5432"
     volumes:
@@ -15,6 +15,9 @@ services:
 
   store_service:
     build: ./store_service
+    working_dir: /app
+    volumes:
+      - ./store_service:/app
     env_file:
       - .env.development
     ports:
@@ -24,6 +27,9 @@ services:
 
   inventory_service:
     build: ./inventory_service
+    working_dir: /app
+    volumes:
+      - ./inventory_service:/app
     env_file:
       - .env.development
     ports:
@@ -35,8 +41,9 @@ services:
     build:
       context: ./customer_sim
       dockerfile: Dockerfile
+    working_dir: /app
     volumes:
-      - ./customer_sim/app:/app
+      - ./customer_sim:/app
     depends_on:
       - store_service
       - inventory_service

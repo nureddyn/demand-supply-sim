@@ -3,4 +3,7 @@ uvicorn[standard]
 pydantic
 httpx
 apscheduler
-
+pytest
+pytest-cov
+black
+flake8

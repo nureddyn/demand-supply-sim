@@ -1,0 +1,47 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password_1234
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test_user"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Lint code
+        run: |
+          pip install black flake8
+          black --check .
+          flake8 .
+
+      - name: Install dependencies and run tests with coverage
+        run: |
+          cd inventory_service && pip install -r requirements.txt
+          pytest --cov=app --cov-config=.coveragerc --cov-fail-under=30
+          cd ../store_service && pip install -r requirements.txt
+          pytest --cov=app --cov-config=.coveragerc --cov-fail-under=30
+          cd ../customer_sim && pip install -r requirements.txt
+          pytest --cov=app --cov-config=.coveragerc --cov-fail-under=30
+

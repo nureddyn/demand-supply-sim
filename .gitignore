@@ -4,3 +4,4 @@ venv/
 *.pyc
 .env.development
 .env.test
+*.coverage
