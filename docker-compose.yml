@@ -15,6 +15,7 @@ services:
 
   store_service:
     build: ./store_service
+    working_dir: /app
     volumes:
       - ./store_service:/app
     env_file:
@@ -26,6 +27,7 @@ services:
 
   inventory_service:
     build: ./inventory_service
+    working_dir: /app
     volumes:
       - ./inventory_service:/app
     env_file:
@@ -39,6 +41,7 @@ services:
     build:
       context: ./customer_sim
       dockerfile: Dockerfile
+    working_dir: /app
     volumes:
       - ./customer_sim:/app
     depends_on:
