@@ -232,7 +232,7 @@ This layer defines how the user will interact with the simulation service. Altho
 
 ---
 
-To conclude, let's take a look at how the folder structure for the three layers described earlier would be organized:
+To conclude, let's take a look at how the folder structure for the four layers described earlier would be organized:
 
 ```
 customer-sim
