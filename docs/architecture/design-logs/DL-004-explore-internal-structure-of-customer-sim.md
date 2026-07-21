@@ -226,9 +226,9 @@ We can refer to the complete execution of a simulation as a “run” or “expe
 Because the models to be presented in this layer will depend on how the data is structured in the `domain/` and `simulation/` layers, these models will also be postponed to a future design log.
 
 ---
-#### CLI
+#### User Interface
 
-This layer defines how the user will interact with the simulation service. Although the structure is still under consideration, one option that has emerged is the MVC (Model-View-Controller) model, which allows for the separation of the system model, the user interface, and the set of commands that the user can execute. It has been decided that the CLI design will be covered in a future design log.
+This layer defines how the user will interact with the simulation service. Although its implementation is still under consideration, one option that has emerged is a command-line interface (CLI) structured according to the MVC (Model-View-Controller) pattern, which separates the system model, its representation to the user, and the commands available to the user. It has been decided that the user interface design will be covered in a future Design Log.
 
 ---
 
