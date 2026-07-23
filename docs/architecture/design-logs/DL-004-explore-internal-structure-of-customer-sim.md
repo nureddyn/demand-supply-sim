@@ -19,7 +19,7 @@ Furthermore, domain knowledge will be used to guide modeling decisions, particul
 Finally, it is worth noting that the descriptions provided below are not intended to commit the design to specific structures, and that the details regarding content and implementation will take shape during the development process itself.
 
   ---
-### `customer-sim` layers
+### `customer-sim` layer
 
 While writing this log, it was decided to experiment with the overall structure and how each module would be organized within the `customer-sim/app` folder. In order to make the different service levels visible based on their concern, it was decided to organize the application into the following layers, which group the elements of each level of abstraction:
 
