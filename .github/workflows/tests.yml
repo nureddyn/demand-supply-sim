@@ -30,13 +30,25 @@ jobs:
         with:
           python-version: "3.11"
 
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            code:
+              - 'customer_sim/**'
+              - 'inventory_service/**'
+              - 'store_service/**'
+              - '.github/workflows/**'
+
       - name: Lint code
+        if: steps.changes.outputs.code == 'true'
         run: |
           pip install black flake8
           black --check .
           flake8 .
 
       - name: Install dependencies and run tests with coverage
+        if: steps.changes.outputs.code == 'true'
         run: |
           cd inventory_service && pip install -r requirements.txt
           pytest --cov=app --cov-config=.coveragerc --cov-fail-under=30
