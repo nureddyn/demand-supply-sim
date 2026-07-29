@@ -5,7 +5,7 @@ class Scheduler:
         num_of_days = 0
         # duration in minutes
         DAY_DURATION = 1440
-        clock = 0
+        self.clock = Clock()
         self.event_list = event_list
 
     def execute(self):
@@ -13,9 +13,9 @@ class Scheduler:
         pass
 
     def advance_time(self, new_time):
-        self.clock = new_time
+        self.clock.set_time(new_time)
 
-    def timing_routine(self):
+    def timing_routine(self, environment):
         days_left = self.num_of_days
 
         while days_left > 0:
@@ -26,7 +26,7 @@ class Scheduler:
 		if event.time >= DAY_DURATION:
 			break
 		self.advance_time(event.time)
-		event.execute()
+		event.execute(environment)
 		new_events = event.next_events()
 		event_list.insert_many(new_events)
             days_left -= 1
