@@ -1,6 +1,18 @@
 from ...app.domain.customer import Customer
 from unittest.mock import Mock
 
+#TODO:
+"""
+Define the test approach for the unit. It is important to make an informal domain analysis to pinpoint the values'
+intervals of each class field along with their respective class invariants and restrictions. For example, if a domain
+rule determines that the minimum possible value for 'budget', when the class is instantiated, must be the lowest market
+price of a product in the global product category, then that rule will influence the design of test cases.
+
+
+Examples of test approaches can be "Equivalence Partitioning" and "Bounded Value testing".
+
+"""
+
 class TestCustomer:
     def test_constructor(self):
         instance = Customer(10)
