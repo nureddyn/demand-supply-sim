@@ -3,17 +3,25 @@ from unittest.mock import Mock
 
 #TODO:
 """
+external dependency level (move this to the external dependency that feeds Customer with 'budget'):
 Define the test approach for the unit. It is important to make an informal domain analysis to pinpoint the values'
 intervals of each class field along with their respective class invariants and restrictions. For example, if a domain
 rule determines that the minimum possible value for 'budget', when the class is instantiated, must be the lowest market
 price of a product in the global product category, then that rule will influence the design of test cases.
 
-
-Examples of test approaches can be "Equivalence Partitioning" and "Bounded Value testing".
-
 It might be better to do the domain analysis for the budget testing data at the environment level or above, where
-the budget generation logic is located. In that case, input data for the constructor of Customer can be in some sense
-arbitrary, focusing on correct initialization and correct method functionality.
+the budget generation logic is located.
+
+How to test this unit:
+- Examples of test approaches can be "Equivalence Partitioning" and "Bounded Value testing".
+- Equivalent Partitioning for 'budget':
+    We need to distinguish between initialization values and and the invariants that will govern how 'budget' will
+    change in value over the lifetime of the object.
+    - Initialization values:
+        - Float Values:
+            - Invalid float values: (budget < MIN_FLOAT_VALUE), (MAX_FLOAT_VALUE < budget)
+            -Invalid lower range: [-MIN_FLOAT_VALUE, 0]
+
 """
 
 class TestCustomer:
