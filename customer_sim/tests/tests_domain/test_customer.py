@@ -1,5 +1,6 @@
 from ...app.domain.customer import Customer
 from unittest.mock import Mock
+import math
 
 #TODO:
 """
@@ -19,18 +20,29 @@ How to test this unit:
     change in value over the lifetime of the object.
     - Initialization values:
         - Float Values:
-            - Invalid float values: (budget < MIN_FLOAT_VALUE), (MAX_FLOAT_VALUE < budget)
-            -Invalid lower range: [-MIN_FLOAT_VALUE, 0]
+            - Invalid lower interval: [-math.inf, 0]. Partition representative: budget = -10
+            - Invalid upper interval: math.inf
+            - Valid interval: [math.nextafter(0, math.inf), math.nextafter(math.inf, -math.inf)]
+              # The above means (0, LARGEST_VALID_FLOAT]
+
+
 
 """
 
-class TestCustomer:
+class TestCustomer(unittest.TestCase):
     def test_constructor(self):
         test_budget_data = 10
         instance = Customer(test_budget_data)
 
         assert instance.budget == 10
         assert instance.wish_list == []
+
+
+        # Invalid budget value
+        test_budget_data = -10
+
+        with self.assertRaises(ValueError):
+            instance = Customer(test_budget_data)
 
 
     def test_request_products(self):
