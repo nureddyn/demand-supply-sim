@@ -27,14 +27,29 @@ How to test this unit:
 
 
 
+
 """
 
 class TestCustomer(unittest.TestCase):
     def test_constructor(self):
+        # Valid nominal value
         test_budget_data = 10
         instance = Customer(test_budget_data)
 
         assert instance.budget == 10
+        assert instance.wish_list == []
+
+        # Valid lower bound (+min)
+        test_budget_data = math.nextafter(0, math.inf)
+
+        assert instance.budget == math.nextafter(0, math.inf)
+        assert instance.wish_list == []
+
+
+        # Valid upper bound (-max)
+        test_budget_data = math.nextafter(math.inf, -math.inf)
+
+        assert instance.budget == math.nextafter(math.inf, -math.inf)
         assert instance.wish_list == []
 
 
@@ -43,6 +58,16 @@ class TestCustomer(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             instance = Customer(test_budget_data)
+
+        # Invalid lower bound (-min)
+        test_budget_data = 0
+
+        with self.assertRaises(ValueError):
+            instance = Customer(test_budget_data)
+
+        # Invalid upper bound (+max)
+        test_budget_data = math.inf + math.nextafter(0, math.inf)
+
 
 
     def test_request_products(self):

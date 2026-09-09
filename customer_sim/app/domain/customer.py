@@ -2,6 +2,8 @@ from .AgentInterface import Agent
 
 class Customer:
     def __init__(self, budget):
+        if budget <= 0:
+            raise ValueError("initial budget cannot be negative or 0")
         self.budget = budget
         self.wish_list = []
 
@@ -9,7 +11,9 @@ class Customer:
         ...
 
     def set_budget(self, value):
-        ...
+        if value < 0:
+            raise ValueError("Budget after purchase cannot be negative")
+        self.budget = value
 
     def request_products(store):
         products = store.get_products()
