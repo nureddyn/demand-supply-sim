@@ -6,7 +6,7 @@ class Arrival(Event):
         self.customer = Customer()
 
     def execute(self, environment):
-        self.customer.set_budget(environment.income_distribution())
+        self.customer.set_budget(environment.generate_budget())
 
         store = environment.get_store()
         self.customer.request_products(store)

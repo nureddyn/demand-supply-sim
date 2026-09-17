@@ -1,10 +1,8 @@
 from .AgentInterface import Agent
 
 class Customer:
-    def __init__(self, budget):
-        if budget <= 0:
-            raise ValueError("initial budget cannot be negative or 0")
-        self.budget = budget
+    def __init__(self):
+        self.budget = 0.0
         self.wish_list = []
 
     def get_budget(self):
