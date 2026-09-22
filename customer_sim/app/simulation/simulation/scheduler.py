@@ -19,10 +19,11 @@ class Scheduler:
         days_left = self.num_of_days
 
         while days_left > 0:
-            first_event = DayStart()
+            first_event = DayStart
             self.event_list.insert(first_event)
             while event_list:
                 event = event_list.extract_min()
+                event = event()
 		if event.time >= DAY_DURATION:
 			break
 		self.advance_time(event.time)
