@@ -1,14 +1,24 @@
-
+import math
+import sys
 
 class Budget:
-    def __init__(self, amount):
-        if amount <= 0:
-            raise ValueError("initial budget cannot be negative or 0")
-        self.amount = budget
+    MAX_BUDGET = sys.float_info.max
 
+    def __init__(self, value):
+        self.value = set_value(value)
 
-    def get_amount(self):
+    def get_value(self):
         ...
 
-    def set_amount(self, amount):
-        ...
+    def set_value(self, value):
+        if math.isnan(value):
+        raise ValueError("Budget cannot be NaN")
+
+        if value < 0:
+            raise ValueError("Budget cannot be negative")
+        self.value = value
+
+        if value >= self.MAX_BUDGET or math.isinf(value):
+            raise ValueError("Budget cannot exceed maximum allowed float limit")
+
+        self.value = value

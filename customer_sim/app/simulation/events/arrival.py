@@ -12,11 +12,10 @@ class Arrival(Event):
 
         store = environment.get_store()
         self.customer.request_products(store)
-
-        # option 2
-        #budget = environment.generate_budget()
-        #wish_list = 
-        #customer = CustomerFactory(customer, )
+        # --------
+        budget_value = environment.generate_budget()
+        budget = Budget(budget_value)
+        customer = Customer(budget)
 
         return "executing event"
 

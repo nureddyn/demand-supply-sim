@@ -1,19 +1,14 @@
-from .AgentInterface import Agent
 
 class Customer:
-    def __init__(self):
-        self.budget = 0.0
+    def __init__(self, budget):
+        self.budget = budget
         self.wish_list = []
 
     def get_budget(self):
         return self.budget
 
-    def set_budget(self, value):
-        if value < 0:
-            raise ValueError("Budget cannot be negative")
-        if value == math.inf:
-            raise ValueError("Budget cannot be max float or beyond")
-        self.budget = value
+    def set_budget(self, budget):
+        self.budget = budget
 
     def request_products(self, store):
         products = store.get_products()
