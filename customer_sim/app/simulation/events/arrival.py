@@ -4,7 +4,6 @@ from .event import Event
 class Arrival(Event):
     def __init__(self, time):
         self.time = time + mock_random_interarrival()
-        self.customer = Customer()
 
     def execute(self, environment):
         # option 1
@@ -16,6 +15,8 @@ class Arrival(Event):
         budget_value = environment.generate_budget()
         budget = Budget(budget_value)
         customer = Customer(budget)
+        # Where is AgentCustomer?
+        # Where do agents will be stored? May be pushing the instance to a list in Environment?
 
         return "executing event"
 
