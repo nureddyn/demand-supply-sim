@@ -12,8 +12,6 @@ class Budget:
     MAX_BUDGET = sys.float_info.max
 
     def __init__(self, value):
-        self.set_value(value)
-
         if math.isnan(value):
             raise ValueError("Budget cannot be NaN")
 
