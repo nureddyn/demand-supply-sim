@@ -1,6 +1,6 @@
 #### General Context
 
-The goal of this phase is to begin developing the first classes of the business domain, where each class is defined with a set of fields and methods sufficient to implement the development cycle and continuous integration (CI). Recall that the system's business domain consists of the classes and rules governing the interaction between buyers and the store.
+The goal of this phase is to begin developing the first classes of the business domain, where each class is defined with a set of fields and methods sufficient to test the development cycle and continuous integration (CI). Recall that the system's business domain consists of the classes and rules governing the interaction between buyers and the store.
 
 
 ### Task 1 — Creation of working branch and required folder
