@@ -19,3 +19,6 @@ The goal of this phase is to begin developing the first classes of the business 
 1. **Implementation of `Customer` class**
 
 - `Customer` will have the fields `budget` and `wish_list`. This decision is made because, generally speaking, every customer will interact with the store when requesting a product of interest contained in their wish list and performing a cost calculation that considers the product's in-store price against their current budget. As for the methods, we will start with just the `getter` and `setter` of `budget`.
+- Made a basic implementation of `test_customer` to test the constructor, starting with the `budget` field as a `Float` primitive value. Later, when implemented `Budget` as a data object, we will update the test to to account for that change.
+- Run `docker compose build customer_sim` to rebuild the container, and then run tests with `docker compose run --rm customer_sim pytest .`, passing successfully.
+- Realized that the contents of `Makefile` does not include a command for testing with `pytest`. Added the corresponding block of code to run all tests with `make test`. After running the command, all tests passed.
