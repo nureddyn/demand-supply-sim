@@ -22,3 +22,9 @@ The goal of this phase is to begin developing the first classes of the business 
 - Made a basic implementation of `test_customer` to test the constructor, starting with the `budget` field as a `Float` primitive value. Later, when implemented `Budget` as a data object, we will update the test to to account for that change.
 - Run `docker compose build customer_sim` to rebuild the container, and then run tests with `docker compose run --rm customer_sim pytest .`, passing successfully.
 - Realized that the contents of `Makefile` does not include a command for testing with `pytest`. Added the corresponding block of code to run all tests with `make test`. After running the command, all tests passed.
+
+2. **Implementation of `Budget` class**
+
+- Implemented `Budget` as a value object class. This decision is made to locate the invariants of its allowed values, and basic methods in one place, resulting in a more organized code. Another advantage of value objects is that they should be implemented as immutable objects, preventing the possibility of unwanted side effects, and promoting data integrity.
+
+
