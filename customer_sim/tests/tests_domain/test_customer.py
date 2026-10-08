@@ -1,6 +1,7 @@
 from app.domain.customer import Customer
 from app.domain.budget import Budget
 
+
 def test_customer_initialization():
     initial_budget = Budget(100.0)
     customer = Customer(initial_budget)

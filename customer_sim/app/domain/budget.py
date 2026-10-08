@@ -1,6 +1,7 @@
 import math
 import sys
 
+
 class Budget:
     MAX_BUDGET = sys.float_info.max
 
@@ -15,4 +16,3 @@ class Budget:
             raise ValueError("Budget cannot exceed maximum allowed float limit")
 
         self.value = value
-
