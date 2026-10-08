@@ -13,6 +13,7 @@ class Budget:
             raise ValueError("Budget cannot be negative")
 
         if value >= self.MAX_BUDGET or math.isinf(value):
-            raise ValueError("Budget cannot exceed maximum allowed float limit")
+            raise ValueError("""Budget cannot exceed
+                   maximum allowed float limit""")
 
         self.value = value
