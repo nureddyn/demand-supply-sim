@@ -1,4 +1,3 @@
-
 class Customer:
     def __init__(self, budget):
         self.budget = budget
