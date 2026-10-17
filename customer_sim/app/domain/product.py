@@ -1,13 +1,16 @@
-
 """
 weight and avgPrice are given from the instantiation of the main product category
 """
+
+
 class Product:
     def __init__(self, name: str, price: float):
-	self.name = name
-	self.price = price
+        self.name = name
+        self.price = price
 
-products = [Product("salshisha", 0.5, 5)]
+
+products = [Product("salshisha", 0.5)]
+
 
 # The following class goes into the Simulation folder
 class ProductDistributionIndex:
