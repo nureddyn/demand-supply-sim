@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class Agent(ABC):
     @abstractmethod
     def observe(self, env) -> str:
@@ -12,4 +13,3 @@ class Agent(ABC):
     @abstractmethod
     def act(self, observation):
         pass
-

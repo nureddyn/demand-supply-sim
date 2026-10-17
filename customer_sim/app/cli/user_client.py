@@ -1,6 +1,6 @@
-from .param_dto import ParamDto
-
-class UserClient:
+# from .param_dto import ParamDto
+"""
+classss UserClient:
     def __init__(self):
         pass
 
@@ -13,3 +13,4 @@ class UserClient:
         # TODO: Fix this
         params = ParamsDto(params)
         return params
+"""

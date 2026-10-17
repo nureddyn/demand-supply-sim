@@ -1,4 +1,3 @@
-
 """
 args:
 commands vs args
@@ -7,9 +6,10 @@ commands vs args
 
 
 """
-from experiments import experiments
 
-class ConfigController:
+# from experiments import experiments
+"""
+classss ConfigController:
     def handle_user_command(self, args):
         if args[0] == "run":
             if args[1] in experiments:
@@ -21,3 +21,4 @@ class ConfigController:
             elif args[1] == "experiments":
                 for key, in experiments:
                     experiments[key].repr()
+"""
