@@ -1,7 +1,5 @@
-from ...app.domain.customer import Customer
-import Budget
-from unittest.mock import Mock
-import math
+from app.domain.budget import Budget
+from app.domain.customer import Customer
 
 
 def test_customer_initialization():
@@ -12,4 +10,3 @@ def test_customer_initialization():
     assert customer.get_budget().value == 100.0
 
     assert customer.wish_list == []
-

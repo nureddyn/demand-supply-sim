@@ -1,6 +1,6 @@
 import math
 import pytest
-import Budget
+from app.domain.budget import Budget
 
 
 @pytest.fixture
@@ -33,14 +33,13 @@ def test_set_budget_zero_boundary_succeeds(budget):
 
 
 def test_set_budget_positive_value_succeeds(budget):
-    """Verifica un valor positivo representativo dentro del dominio válido."""
+    """Verify a representative positive value within the valid domain"""
     budget.set_value(10.0)
     assert budget.value == 10.0
 
 
 def test_set_budget_highest_valid_float_succeeds(budget):
-    """Verifica el valor límite superior válido (justo debajo del máximo permitido)."""
+    """Verify the valid upper limit value (just below the maximum allowed)"""
     valid_max = math.nextafter(Budget.MAX_BUDGET, 0.0)
     budget.set_value(valid_max)
     assert budget.value == valid_max
-
