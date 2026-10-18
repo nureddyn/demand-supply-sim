@@ -1,5 +1,5 @@
-from app.domain.customer import Customer
 from app.domain.budget import Budget
+from app.domain.customer import Customer
 
 
 def test_customer_initialization():

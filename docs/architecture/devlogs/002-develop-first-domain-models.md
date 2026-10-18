@@ -25,6 +25,6 @@ The goal of this phase is to begin developing the first classes of the business 
 
 2. **Implementation of `Budget` class**
 
-- Implemented `Budget` as a value object class. This decision is made to locate the invariants of its allowed values, and basic methods in one place, resulting in a more organized code. Another advantage of value objects is that they should be implemented as immutable objects, preventing the possibility of unwanted side effects, and promoting data integrity.
+- Implemented `Budget` as a value object class. This decision is made to locate the invariants of its allowed values and basic methods in one place, resulting in a more organized code. Another advantage of value objects is that they should be implemented as immutable objects, preventing the possibility of unwanted side effects, and promoting data integrity.
 
 
