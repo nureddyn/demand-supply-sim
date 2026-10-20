@@ -1,4 +1,4 @@
-from app.domain.budget import Budget, budget
+from app.domain.budget import Budget
 import pytest
 import math
 
@@ -25,24 +25,24 @@ def test_set_budget_invalid_values_raise_error(budget, invalid_value, expected_m
     # Verify the constructor denies the value
     with pytest.raises(ValueError, match=expected_msg):
         Budget(invalid_value)
-    # Verify set_value denies the value in an existing instance
+    # Verify value denies the value in an existing instance
     with pytest.raises(ValueError, match=expected_msg):
-        budget.set_value(invalid_value)
+        budget.value = invalid_value
 
 
 def test_set_budget_zero_boundary_succeeds(budget):
-    budget.set_value(0.0)
+    budget.value = 0.0
     assert budget.value == 0.0
 
 
 def test_set_budget_positive_value_succeeds(budget):
     """Verify a representative positive value within the valid domain"""
-    budget.set_value(10.0)
+    budget.value = 10.0
     assert budget.value == 10.0
 
 
 def test_set_budget_highest_valid_float_succeeds(budget):
     """Verify the valid upper limit value"""
     valid_max = Budget.MAX_BUDGET
-    budget.set_value(valid_max)
+    budget.value = valid_max
     assert budget.value == valid_max
