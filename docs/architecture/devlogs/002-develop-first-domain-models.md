@@ -28,4 +28,7 @@ The goal of this phase is to begin developing the first classes of the business 
 - Implemented `Budget` as a value object class. This decision is made to locate the invariants of its allowed values and basic methods in one place, resulting in a more organized code. Another advantage of value objects is that they should be implemented as immutable objects, preventing the possibility of unwanted side effects, and promoting data integrity.
 
 - Updated tests for `test_customer`: Consider budget as an object, parameterized invalid values determined by Budget invariants, and added tests for valid and invalid values of budget, using Equivalence Partitioning.
-TODO: run tests
+
+- Rebuilt `customer_sim` container and run tests. Found out that `test_budget` was failing due to two main factors:
+  1. Incorrect way of calling the accessor and modifier methods (`Budget` is using the `@property` decorator).
+  2. The invariants were not being executed when `budget.value` modifier was called.
