@@ -1,8 +1,6 @@
-
-
 class Simulation:
     def __init__(self, scheduler, environment):
-        # This parameters are passed from the controller runtime
+        # These parameters may be passed from the controller runtime
         self.scheduler = scheduler
         self.environment = environment
 
