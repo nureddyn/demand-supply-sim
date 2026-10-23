@@ -1,12 +1,13 @@
-from app.domain.budget import Budget
 from app.domain.customer import Customer
+from app.domain.money import Money
+from decimal import Decimal
 
 
 def test_customer_initialization():
-    initial_budget = Budget(100.0)
-    customer = Customer(initial_budget)
+    initial_money = Money(amount=Decimal("100.0"), currency="USD")
+    customer = Customer(initial_money)
 
-    assert customer.budget == initial_budget
-    assert customer.budget.value == 100.0
+    assert customer.money == initial_money
+    assert customer.money.amount == Decimal("100.0")
 
     assert customer.wish_list == []

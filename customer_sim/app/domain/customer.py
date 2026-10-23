@@ -1,12 +1,15 @@
+from app.domain.money import Money
+
+
 class Customer:
-    def __init__(self, budget):
-        self.budget = budget
+    def __init__(self, money: Money):
+        self.money = money
         self.wish_list = []
 
     @property
-    def budget(self):
-        return self._budget
+    def money(self):
+        return self._money
 
-    @budget.setter
-    def budget(self, budget):
-        self._budget = budget
+    @money.setter
+    def money(self, money):
+        self._money = money

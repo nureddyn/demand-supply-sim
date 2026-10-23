@@ -34,9 +34,10 @@ The goal of this phase is to begin developing the first classes of the business 
   2. The invariants were not being executed when `budget.value` modifier was called.
 
 
-3. **Implementation of Product class**
+### Task 3 — Design and development of Product class
 
-- Although we haven't defined the context in which a `Product` instance will be created, nor the appropriate mechanism to identify each product instance in the simulation, we can start by defining `name` and `value` as its fields. A problem that already emerges as common between the `Customer` and `Product` classes is that both have a field that could potentially be of the same data type; `Customer.budget` and `Product.value` could both be considered `Currency`.
+###### Process and Decisions:
 
+- Although we haven't defined the context in which a `Product` instance will be created, nor the appropriate mechanism to identify each product instance in the simulation, we can start by defining `name` and `price` as its fields. A problem that already emerges as common between the `Customer` and `Product` classes is that both have a field that could potentially be of the same data type; `Customer.budget` and `Product.price` could both be considered `Money`.
 
-
+- This approach involves renaming the `Budget` class to `Money`, modifying `Product` so that the `price` field is of type `Money`, modifying `Customer` so that the `budget` field is also of type `Money`, and modifying `Money` so that it effectively becomes an immutable value object. Finally, we must also change the import names from all files involved, including test files. For representing monetary amounts, it has been decided to use `decimal` instead of `float`, thereby avoiding precision issues associated with the binary representation of decimal numbers.
