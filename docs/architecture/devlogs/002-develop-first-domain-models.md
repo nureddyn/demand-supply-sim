@@ -33,8 +33,10 @@ The goal of this phase is to begin developing the first classes of the business 
   1. Incorrect way of calling the accessor and modifier methods (`Budget` is using the `@property` decorator).
   2. The invariants were not being executed when `budget.value` modifier was called.
 
+
 3. **Implementation of Product class**
 
 - Although we haven't defined the context in which a `Product` instance will be created, nor the appropriate mechanism to identify each product instance in the simulation, we can start by defining `name` and `value` as its fields. A problem that already emerges as common between the `Customer` and `Product` classes is that both have a field that could potentially be of the same data type; `Customer.budget` and `Product.value` could both be considered `Currency`.
+
 
 
