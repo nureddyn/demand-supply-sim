@@ -32,19 +32,12 @@ def test_money_is_immutable(money):
         money.amount = Decimal("50.0")
 
 
-def test_set_money_zero_boundary_succeeds(money):
-    money.value = 0.0
-    assert money.value == 0.0
+def test_set_money_zero_boundary_succeeds():
+    money = Money(amount=Decimal("0.0"), currency="USD")
+    assert money.amount == Decimal("0.0")
 
 
-def test_set_money_positive_value_succeeds(money):
+def test_set_money_positive_value_succeeds():
     """Verify a representative positive value within the valid domain"""
-    money.value = 10.0
-    assert money.value == 10.0
-
-
-def test_set_money_highest_valid_float_succeeds(money):
-    """Verify the valid upper limit value"""
-    valid_max = Money.MAX_BUDGET
-    money.value = valid_max
-    assert money.value == valid_max
+    money = Money(amount=Decimal("10.0"), currency="USD")
+    assert money.amount == Decimal("10.0")

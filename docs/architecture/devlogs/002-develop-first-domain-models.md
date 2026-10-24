@@ -41,3 +41,6 @@ The goal of this phase is to begin developing the first classes of the business 
 - Although we haven't defined the context in which a `Product` instance will be created, nor the appropriate mechanism to identify each product instance in the simulation, we can start by defining `name` and `price` as its fields. A problem that already emerges as common between the `Customer` and `Product` classes is that both have a field that could potentially be of the same data type; `Customer.budget` and `Product.price` could both be considered `Money`.
 
 - This approach involves renaming the `Budget` class to `Money`, modifying `Product` so that the `price` field is of type `Money`, modifying `Customer` so that the `budget` field is also of type `Money`, and modifying `Money` so that it effectively becomes an immutable value object. Finally, we must also change the import names from all files involved, including test files. For representing monetary amounts, it has been decided to use `decimal` instead of `float`, thereby avoiding precision issues associated with the binary representation of decimal numbers.
+
+- Added tests for `Money` using Equivalence Partitioning and boundary-value testing. Building the container, the tests were executed and passed successfully.
+

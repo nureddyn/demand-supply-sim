@@ -12,11 +12,11 @@ class Money:
         if math.isnan(self.amount):
             raise ValueError("Amount cannot be NaN")
 
-        if self.amount < 0:
-            raise ValueError("Amount cannot be negative")
-
         if not self.amount.is_finite():
             raise ValueError("Amount must be finite")
+
+        if self.amount < 0:
+            raise ValueError("Amount cannot be negative")
 
 
 """
