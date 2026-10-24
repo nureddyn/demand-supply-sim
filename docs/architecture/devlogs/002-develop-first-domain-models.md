@@ -42,5 +42,21 @@ The goal of this phase is to begin developing the first classes of the business 
 
 - This approach involves renaming the `Budget` class to `Money`, modifying `Product` so that the `price` field is of type `Money`, modifying `Customer` so that the `budget` field is also of type `Money`, and modifying `Money` so that it effectively becomes an immutable value object. Finally, we must also change the import names from all files involved, including test files. For representing monetary amounts, it has been decided to use `decimal` instead of `float`, thereby avoiding precision issues associated with the binary representation of decimal numbers.
 
-- Added tests for `Money` using Equivalence Partitioning and boundary-value testing. Building the container, the tests were executed and passed successfully.
+- Added tests for `Money` using Equivalence Partitioning and boundary-value testing. Building the image, the tests were executed and passed successfully.
+
+### Task 4 — Implementation of the first methods of the Customer class
+
+###### Process and Decisions:
+
+1. **Implementation of `Budget` class**
+
+- This decision is being made to evaluate how Customer will interact with Money by updating `budget` when spending.
+
+- In `Customer`, the budget modifier was replaced by the `spend()` method, with a parameter of type `Money` to be subtracted from the current `budget` value.
+
+- In the `Money` class, the operator methods `__add__()`, `__sub__()`, and `__gt__()` (greater than) were added to allow for clean operations among `Money` values, specifically, for use within the `spend()` method of the `Customer` class.
+
+- A basic test was added to verify that `spend()` works with allowed values.
+
+- Rebuilding the image, the tests were executed and passed successfully.
 
