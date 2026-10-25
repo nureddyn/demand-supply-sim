@@ -44,13 +44,14 @@ The goal of this phase is to begin developing the first classes of the business 
 
 - Added tests for `Money` using Equivalence Partitioning and boundary-value testing. Building the image, the tests were executed and passed successfully.
 
+
 ### Task 4 — Implementation of the first methods of the Customer class
 
 ###### Process and Decisions:
 
-1. **Implementation of `Budget` class**
+1. **Defining operations between `Money` instances and how they relate to `Customer.budget`**
 
-- This decision is being made to evaluate how Customer will interact with Money by updating `budget` when spending.
+- This decision is being made to evaluate how Customer will interact with `Money` by updating `budget` when spending.
 
 - In `Customer`, the budget modifier was replaced by the `spend()` method, with a parameter of type `Money` to be subtracted from the current `budget` value.
 
@@ -60,3 +61,4 @@ The goal of this phase is to begin developing the first classes of the business 
 
 - Rebuilding the image, the tests were executed and passed successfully.
 
+TODO: Finish basic tests for Money, and make tests for Product.
