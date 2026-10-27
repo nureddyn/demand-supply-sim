@@ -2,6 +2,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 from decimal import Decimal
+from re import sub
 
 
 @dataclass(frozen=True)
@@ -20,16 +21,16 @@ class Money:
             raise ValueError("Amount cannot be negative")
 
     def __add__(self, summand: Money) -> Money:
-        if self.currency != summand.currency:
-            raise ValueError("Currency missmatch")
-
+        self._check_currency_match(summand)
         return Money(amount=self.amount + summand.amount, currency=self.currency)
 
     def __sub__(self, subtrahend: Money) -> Money:
-        if self.currency != subtrahend.currency:
-            raise ValueError("Currency missmatch")
-
+        self._check_currency_match(subtrahend)
         return Money(amount=self.amount - subtrahend.amount, currency=self.currency)
+
+    def _check_currency_match(self, other: Money):
+        if self.currency != other.currency:
+            raise ValueError("Currency missmatch")
 
     def __gt__(self, other: Money) -> bool:
         return self.amount > other.amount

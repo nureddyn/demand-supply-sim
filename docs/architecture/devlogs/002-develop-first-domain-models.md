@@ -61,4 +61,5 @@ The goal of this phase is to begin developing the first classes of the business 
 
 - Rebuilding the image, the tests were executed and passed successfully.
 
-TODO: Finish basic tests for Money, and make tests for Product.
+- Added tests for arithmetic operations and greater than predicate between `Money` instances.
+TODO: Finish basic tests for Customer, and make tests for Product.

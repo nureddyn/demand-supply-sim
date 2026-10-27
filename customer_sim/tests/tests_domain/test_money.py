@@ -41,3 +41,27 @@ def test_set_money_positive_value_succeeds():
     """Verify a representative positive value within the valid domain"""
     money = Money(amount=Decimal("10.0"), currency="USD")
     assert money.amount == Decimal("10.0")
+
+
+def test_valid_addition_between_money_instances(money):
+    summand = Money(amount=Decimal("10.0"), currency="USD")
+    total = money + summand
+    assert total == Money(amount=Decimal("10.0"), currency="USD")
+
+
+def test_invalid_addition_with_different_currency(money):
+    summand = Money(amount=Decimal("25.0"), currency="EUR")
+    with pytest.raises(ValueError, match="Currency missmatch"):
+        money + summand
+
+
+def test_valid_subtraction_between_money_instances():
+    minuend = Money(amount=Decimal("21.5"), currency="USD")
+    subtrahend = Money(amount=Decimal("8.0"), currency="USD")
+    total = minuend - subtrahend
+    assert total == Money(amount=Decimal("13.5"), currency="USD")
+
+
+def test_greater_than_predicate(money):
+    other = Money(amount=Decimal("6.3"), currency="USD")
+    assert (other > money) == True
