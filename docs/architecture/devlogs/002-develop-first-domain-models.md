@@ -62,4 +62,9 @@ The goal of this phase is to begin developing the first classes of the business 
 - Rebuilding the image, the tests were executed and passed successfully.
 
 - Added tests for arithmetic operations and greater than predicate between `Money` instances.
-TODO: Finish basic tests for Customer, and make tests for Product.
+
+- Tests added for valid and invalid spend values in `Customer`. 
+
+- Implemented `Product.set_price` and added tests for initialization, and `set_price`.
+
+- All tests executed and passed successfully.

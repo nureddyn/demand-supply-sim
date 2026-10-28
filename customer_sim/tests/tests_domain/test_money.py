@@ -11,6 +11,11 @@ def money():
     return Money(amount=Decimal("0.0"), currency="USD")
 
 
+def test_money_initialization(money):
+    assert money.amount == Decimal("0.0")
+    assert money.currency == "USD"
+
+
 @pytest.mark.parametrize(
     "invalid_value, expected_msg",
     [

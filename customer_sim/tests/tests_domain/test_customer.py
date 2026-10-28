@@ -23,5 +23,10 @@ def test_customer_spend_valid_money(customer):
     current_budget = customer.budget
     money_spent = Money(amount=Decimal("20.0"), currency="USD")
     customer.spend(money_spent)
-    # 80.0 - 20.0
     assert customer.budget == current_budget - money_spent
+
+
+def test_customer_spend_more_money_than_budget(customer):
+    money_spent = Money(amount=Decimal("90.0"), currency="USD")
+    with pytest.raises(ValueError):
+        customer.spend(money_spent)
