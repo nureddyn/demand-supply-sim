@@ -2,7 +2,6 @@ from dataclasses import FrozenInstanceError
 
 from app.domain.money import Money
 import pytest
-import math
 from decimal import Decimal
 
 
@@ -69,4 +68,4 @@ def test_valid_subtraction_between_money_instances():
 
 def test_greater_than_predicate(money):
     other = Money(amount=Decimal("6.3"), currency="USD")
-    assert (other > money) == True
+    assert other > money
