@@ -32,3 +32,39 @@ The goal of this phase is to begin developing the first classes of the business 
 - Rebuilt `customer_sim` container and run tests. Found out that `test_budget` was failing due to two main factors:
   1. Incorrect way of calling the accessor and modifier methods (`Budget` is using the `@property` decorator).
   2. The invariants were not being executed when `budget.value` modifier was called.
+
+
+### Task 3 — Design and development of Product class
+
+###### Process and Decisions:
+
+- Although we haven't defined the context in which a `Product` instance will be created, nor the appropriate mechanism to identify each product instance in the simulation, we can start by defining `name` and `price` as its fields. A problem that already emerges as common between the `Customer` and `Product` classes is that both have a field that could potentially be of the same data type; `Customer.budget` and `Product.price` could both be considered `Money`.
+
+- This approach involves renaming the `Budget` class to `Money`, modifying `Product` so that the `price` field is of type `Money`, modifying `Customer` so that the `budget` field is also of type `Money`, and modifying `Money` so that it effectively becomes an immutable value object. Finally, we must also change the import names from all files involved, including test files. For representing monetary amounts, it has been decided to use `decimal` instead of `float`, thereby avoiding precision issues associated with the binary representation of decimal numbers.
+
+- Added tests for `Money` using Equivalence Partitioning and boundary-value testing. Building the image, the tests were executed and passed successfully.
+
+
+### Task 4 — Implementation of the first methods of the Customer class
+
+###### Process and Decisions:
+
+1. **Defining operations between `Money` instances and how they relate to `Customer.budget`**
+
+- This decision is being made to evaluate how Customer will interact with `Money` by updating `budget` when spending.
+
+- In `Customer`, the budget modifier was replaced by the `spend()` method, with a parameter of type `Money` to be subtracted from the current `budget` value.
+
+- In the `Money` class, the operator methods `__add__()`, `__sub__()`, and `__gt__()` (greater than) were added to allow for clean operations among `Money` values, specifically, for use within the `spend()` method of the `Customer` class.
+
+- A basic test was added to verify that `spend()` works with allowed values.
+
+- Rebuilding the image, the tests were executed and passed successfully.
+
+- Added tests for arithmetic operations and greater than predicate between `Money` instances.
+
+- Tests added for valid and invalid spend values in `Customer`. 
+
+- Implemented `Product.set_price` and added tests for initialization, and `set_price`.
+
+- All tests executed and passed successfully.
