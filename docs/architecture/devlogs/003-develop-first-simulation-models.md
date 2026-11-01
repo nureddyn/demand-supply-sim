@@ -16,10 +16,10 @@ We will attempt to develop the relevant units as generally as possible, followin
 
 3. The `Arrival` class is defined, inheriting directly from `Event`. `Arrival` is structured as follows:
 
-- Definition of the `execute` method, which will produce instances of `Customer`, `CustomerAgent`, and a value for `budget`, with the three interacting through composition: `CustomerAgent(Customer(Budget))`.
+- Definition of the `execute` method, which will produce instances of `Customer`, `CustomerAgent`, and a value for `budget`, with the three interacting through composition: `CustomerAgent(Customer(budget))`.
 
 - `CustomerAgent` will be inserted into a list representing the agent space of `Environment`. We will define `Environment`, which will be passed as an argument to `execute`,later on, so for now we will assume that it exists and that it has the `agent_space` field and the `seed_budget` method, which randomly generates the `budget` value assigned to the buyer agent.
 
-- The relationship between `Arrival`, `Customer`, and `CustomerAgent` will be a simple dependency, so we import the modules into the `Arrival` file. This decision is made because we found no reason to pass instances of these classes as arguments to `execute`. On the other hand, `environment` is passed as an argument to `execute` since events are logically and structurally coupled with `environment`, that is, every simulated event must occur within a simulated environment and, in turn, must be able to modify or be influenced by that environment.
+- The relationship between `Arrival`, `Customer`, and `CustomerAgent` will be a simple dependency, so we import the modules into the `arrival.py` file. This decision is made because we found no reason to pass instances of these classes as arguments to `execute`. On the other hand, `environment` is passed as an argument to `execute` since events are logically and structurally coupled with `environment`, that is, every simulated event must occur within a simulated environment and, in turn, must be able to modify or be influenced by that environment.
 
 4. We define the abstract class `Agent` with the dummy methods `observe`, `decide`, and `act`. Next, we define the class `CustomerAgent`, which inherits directly from `Agent`. In addition, `CustomerAgent` receives a `Customer` instance as an argument in its constructor.
