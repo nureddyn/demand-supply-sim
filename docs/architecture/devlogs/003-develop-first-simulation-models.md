@@ -39,3 +39,15 @@ We will attempt to develop the relevant units as generally as possible, followin
 - It was found that `Arrival` was not directly inheriting from the abstract class `Event`; when inheritance was added, some override errors occurred because `Arrival` was not conforming to the specific structure of `Event`. It was decided that every event would use `environment` as the input for `execute`. The remaining stub was also added to `Arrival` to conform to the structure of `Event`.
 
 - When the tests, linter, and the formatter were run, they passed successfully.
+
+### Task 2 — First development of `Environment`
+
+###### Process and Decisions:
+
+1. The `app/simulation/environment` path is created with the `environment.py` file. The decision to place this unit in its own directory stems from the fact that future development of `Environment` may involve different subclasses depending on the type of experiment being conducted. If a user has the ability to configure custom parameters for the simulation, designing `Environment` in a modular way is a reasonable decision. Later on, this same decision could also be made when developing the first stage of the `Simulation` class.
+
+2. We know that right now `Arrival` uses `Environment` as a parameter for the `execute` method, specifically, `environment.seed_budget`, so we'll start with that method:
+
+- `seed_budget` is a method that allows `Environment` to generate `budget` instances with random amounts and assign them to `Customer` instances. We start with a hardcoded implementation, using `random.uniform(a, b)` and converting the output to the `Money` type, where a = 0.0 and b = 100.0.
+
+- The initial unit test is created in `tests_simulation/tests_environment/test_environment.py`. The test sets a fixed seed using `random.seed()` to guarantee a predictable sequence of values, ensuring that the assertions do not fail.
