@@ -7,8 +7,8 @@ from itertools import count
 
 class Environment:
     def __init__(self) -> None:
-        self._current_id = count(0)
-        self.agent_space: dict[int, Agent]
+        self._next_agent_id = count(1)
+        self.agent_space: dict[int, Agent] = {}
 
     def seed_budget(self):
         return Money(amount=Decimal(str(random.uniform(0.0, 100.0))), currency="USD")
@@ -19,4 +19,4 @@ class Environment:
         return id
 
     def _generate_agent_id(self):
-        return next(self._current_id)
+        return next(self._next_agent_id)

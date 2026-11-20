@@ -14,7 +14,7 @@ class Arrival(Event):
         agent_id = environment.add_agent(customer_agent)
         self._set_agent_id(agent_id)
 
-    def _set_agent_id(self, id):
+    def _set_agent_id(self, id: int):
         self.agent_id = id
 
     def next_events(self):
