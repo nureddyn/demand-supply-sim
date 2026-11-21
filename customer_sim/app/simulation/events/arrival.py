@@ -5,7 +5,7 @@ from app.simulation.agents.customer_agent import CustomerAgent
 
 class Arrival(Event):
     def __init__(self) -> None:
-        agent_id: int | None = None
+        self.agent_id: int | None = None
 
     def execute(self, environment):
         budget = environment.seed_budget()
