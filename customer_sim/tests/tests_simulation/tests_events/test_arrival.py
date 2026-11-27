@@ -37,7 +37,7 @@ def test_execute_updates_agent_id_correctly(arrival, mocker):
 
     mock_environment.add_agent.return_value = 1
 
-    assert arrival.agent_id == None
+    assert arrival.agent_id is None
 
     arrival.execute(mock_environment)
 
